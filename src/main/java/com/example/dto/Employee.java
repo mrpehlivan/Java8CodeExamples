@@ -13,14 +13,18 @@ public class Employee {
     private String surname;
     private String address;
     private double salary;
+    private boolean active;
+    private boolean blocked;
 
-    public Employee(int id, String department, String name, String surname, String address, double salary) {
+    public Employee(int id, String department, String name, String surname, String address, double salary, boolean active, boolean blocked) {
         this.id = id;
         this.department = department;
         this.name = name;
         this.surname = surname;
         this.address = address;
         this.salary = salary;
+        this.active = active;
+        this.blocked = blocked;
     }
 
     public Employee() {
@@ -74,6 +78,21 @@ public class Employee {
         this.salary = salary;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
 
     @Override
     public String toString() {
@@ -84,6 +103,8 @@ public class Employee {
                 ", surname='" + surname + '\'' +
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
+                ", active=" + active +
+                ", blocked=" + blocked +
                 '}';
     }
 }

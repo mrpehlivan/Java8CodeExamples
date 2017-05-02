@@ -2,9 +2,11 @@ package com.example.streams;
 
 import com.example.dto.Employee;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
+import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
 
 /**
@@ -68,6 +70,12 @@ public class CollectorsExample {
     public Map<Boolean,List<Employee>> partitionEmployees(List<Employee> employees){
         return  employees.stream().collect(Collectors.partitioningBy(e -> e.getDepartment().equals("Department1")));
     }
+
+    public List<Employee> sortEmployeeByActive(List<Employee> employees){
+        return  employees.stream().sorted(Comparator.comparing(Employee::isBlocked)).collect(Collectors.toList());
+    }
+
+
 
 
 }

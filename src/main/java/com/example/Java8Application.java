@@ -15,11 +15,11 @@ import java.util.stream.IntStream;
 public class Java8Application {
 
 	static  final List<Employee> employees = new ArrayList<Employee>(){{;
-		add(new Employee(1,"Department1","Name1","Surname1","Adress1", new Double("100")));
-		add(new Employee(2,"Department1","Name2","Surname2","Adress2", new Double("110")));
-		add(new Employee(3,"Department2","Name3","Surname3","Adress3", new Double("120")));
-		add(new Employee(4,"Department2","Name4","Surname4","Adress4", new Double("130")));
-		add(new Employee(5,"Department3","Name5","Surname5","Adress5", new Double("140")));
+		add(new Employee(1,"Department1","Name1","Surname1","Adress1", new Double("100"),true,true));
+		add(new Employee(2,"Department1","Name2","Surname2","Adress2", new Double("110"),true,false));
+		add(new Employee(3,"Department2","Name3","Surname3","Adress3", new Double("120"),true,false));
+		add(new Employee(4,"Department2","Name4","Surname4","Adress4", new Double("130"),true,false));
+		add(new Employee(5,"Department3","Name5","Surname5","Adress5", new Double("140"),true,true));
 	}};
 
 	public static void main(String[] args) {
@@ -63,6 +63,11 @@ public class Java8Application {
 			//partition of employess by department1
 			collectorsExample.partitionEmployees(employees).forEach((k, v) -> System.out.println(k + " : " + v));
 			System.out.println("------------------------------END OF COLLECTOR EXAMPLE----------------------------------");
+
+			//active
+			System.out.println();
+			collectorsExample.sortEmployeeByActive(employees).forEach(k -> System.out.println("Active : " + k));
+			System.out.println("------------------------------------------------------------------------------------------");
 		}
 		System.out.println();
 		{
