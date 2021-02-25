@@ -2,12 +2,10 @@ package com.example.streams;
 
 import com.example.dto.Employee;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Created by mrpehlivan on 26/04/2017.
@@ -75,6 +73,10 @@ public class CollectorsExample {
         return  employees.stream().sorted(Comparator.comparing(Employee::isBlocked)).collect(Collectors.toList());
     }
 
+
+    public List<Employee> generateEmployeeList(){
+        return IntStream.rangeClosed(1,5).mapToObj(i -> new Employee(i,"Department"+i,"Name"+i,"Surname"+i,"Adress"+i, 100*i,true, new Random().nextBoolean())).collect(Collectors.toList());
+    }
 
 
 
