@@ -9,6 +9,11 @@ public interface DefaultMethodUsageInterfaceExample {
     default void print() {
         System.out.println("Hi, I am working on the DefaultMethodUsageInterfaceExample as DEFAULT method.");
     }
+
+    default int sum(int a, int b){
+        System.out.println(a+b);
+        return a+b;
+    }
 }
 
 /**
@@ -21,9 +26,9 @@ class DefaultMethodExampleClass implements DefaultMethodUsageInterfaceExample {
         DefaultMethodUsageInterfaceExample.super.print();
     }
 
-
     public static void main(String[] args) {
         DefaultMethodExampleClass defaultMethodExampleClass = new DefaultMethodExampleClass();
         defaultMethodExampleClass.print();
+        defaultMethodExampleClass.sum(3,4);
     }
 }
