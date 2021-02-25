@@ -36,13 +36,13 @@ public class CollectorsExample {
     }
 
     //EXAMPLE 3
-    // Sum amount all employess
+    // Sum amount all employees
     public double totalAmountOfEmployees(List<Employee> employees){
-        return  employees.stream().collect(Collectors.summingDouble(Employee::getSalary));
+        return employees.stream().mapToDouble(Employee::getSalary).sum();
     }
 
     //EXAMPLE 4
-    // Sum amount all employess and groupByDepartment
+    // Sum amount all employees and groupByDepartment
     public Map<String,Double> totalAmountOfEmployeesByDepartment(List<Employee> employees){
         return  employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.summingDouble(Employee::getSalary)));
     }
@@ -56,17 +56,17 @@ public class CollectorsExample {
     //EXAMPLE 6
     //filter employees by salary that which are larger than 100 by department
     public Map<String,List<Employee>> filterEmployeesByDepartment(List<Employee> employees){
-        return  employees.stream().filter(e -> e.getSalary()>Double.valueOf("100")).collect(Collectors.groupingBy(Employee::getDepartment));
+        return  employees.stream().filter(e -> e.getSalary()>Double.parseDouble("100")).collect(Collectors.groupingBy(Employee::getDepartment));
     }
 
     //EXAMPLE 7
-    //Avarage of salary by department
-    public Map<String,Double> avarageSalaryByDepartment(List<Employee> employees){
+    //Average of salary by department
+    public Map<String,Double> averageSalaryByDepartment(List<Employee> employees){
         return  employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.averagingDouble(Employee::getSalary)));
     }
 
     //EXAMPLE 8
-    //partition of employess by department1
+    //partition of employees by department1
     public Map<Boolean,List<Employee>> partitionEmployees(List<Employee> employees){
         return  employees.stream().collect(Collectors.partitioningBy(e -> e.getDepartment().equals("Department1")));
     }

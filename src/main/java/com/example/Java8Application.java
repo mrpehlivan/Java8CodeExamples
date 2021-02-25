@@ -6,10 +6,7 @@ import com.example.streams.IntegerStreamExample;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @SpringBootApplication
 public class Java8Application {
@@ -56,11 +53,11 @@ public class Java8Application {
 			collectorsExample.filterEmployeesByDepartment(employees).forEach((k, v) -> System.out.println(k + " : " + v));
 			System.out.println("------------------------------------------------------------------------------------------");
 
-			//avarage salary by departmens
-			collectorsExample.avarageSalaryByDepartment(employees).forEach((k, v) -> System.out.println(k + " : " + v));
+			//average salary by departmens
+			collectorsExample.averageSalaryByDepartment(employees).forEach((k, v) -> System.out.println(k + " : " + v));
 			System.out.println("------------------------------------------------------------------------------------------");
 
-			//partition of employess by department1
+			//partition of employees by department1
 			collectorsExample.partitionEmployees(employees).forEach((k, v) -> System.out.println(k + " : " + v));
 			System.out.println("------------------------------END OF COLLECTOR EXAMPLE----------------------------------");
 
@@ -76,10 +73,10 @@ public class Java8Application {
 			//To initialize IntegerStreamExample class
 			IntegerStreamExample integerStreamExample = new IntegerStreamExample();
 
-			integerStreamExample.rangeAndFindSquareOfNumbersExample(1,8).forEach(p-> System.out.println(p));
+			integerStreamExample.rangeAndFindSquareOfNumbersExample(1,8).forEach(System.out::println);
 			System.out.println("------------------------------------------------------------------------------------------");
 
-			integerStreamExample.rangeClosedAndFindSquareOfNumbersExample(1,8).forEach(p-> System.out.println(p));
+			integerStreamExample.rangeClosedAndFindSquareOfNumbersExample(1,8).forEach(System.out::println);
 			System.out.println("------------------------------------------------------------------------------------------");
 
 			System.out.println(integerStreamExample.concatNumbersExample(1,1).count());
