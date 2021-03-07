@@ -3,7 +3,6 @@ package com.example.streams;
 import com.example.dto.Employee;
 
 import java.util.*;
-import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -15,21 +14,14 @@ import java.util.stream.IntStream;
 public class CollectorsExample {
 
     //EXAMPLE 1
-    // Accumulate names into a List
+    // Collect names into a List
     public List<String> employeeNameList(List<Employee> employees){
-        //First use list and stream it
-        //if you want to do a filter operation you can use .map method
-        //and return type will be .collect method
         return employees.stream().map(Employee::getName).collect(Collectors.toList());
     }
 
     //EXAMPLE 2
-    // Accumulate names into a Tree Set
+    // Collect names into a Tree Set
     public TreeSet<String> employeeNameTreeSet(List<Employee> employees){
-        //First use list and stream it
-        //if you want to do a filter operation you can use .map method
-        //and return type will be .collect method
-        //and we used that Collectors.toCollection method to extract different type
         return  employees.stream().map(Employee::getName).collect(Collectors.toCollection(TreeSet::new));
     }
 

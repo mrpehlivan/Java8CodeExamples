@@ -3,6 +3,7 @@ package com.example;
 import com.example.dto.Employee;
 import com.example.streams.CollectorsExample;
 import com.example.streams.IntegerStreamExample;
+import com.example.streams.StringManipulationExample;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,8 +16,8 @@ import java.util.stream.IntStream;
 public class Java8Application {
 
     static final List<Employee> employees = IntStream.rangeClosed(1, 5)
-			.mapToObj(i -> new Employee(i, "Department" + i, "Name" + i, "Surname" + i, "Adress" + i, 100 * i, true, new Random().nextBoolean()))
-			.collect(Collectors.toList());
+            .mapToObj(i -> new Employee(i, "Department" + i, "naMe" + i, "Surname" + i, "Adress" + i, 100 * i, true, new Random().nextBoolean()))
+            .collect(Collectors.toList());
 
     public static void main(String[] args) {
         SpringApplication.run(Java8Application.class, args);
@@ -107,6 +108,29 @@ public class Java8Application {
 
         }
 
+        System.out.println();
+
+        {
+            System.out.println("------------------------------START OF STRING MANIPULATION EXAMPLE----------------------------------");
+
+            StringManipulationExample stringManipulationExample = new StringManipulationExample();
+            stringManipulationExample.printCharAtOfRequestedPositionInEmployeeName(employees, new Random().ints(1, 4).findFirst().getAsInt());
+            stringManipulationExample.printContainOfRequestedStringInEmployeeName(employees, "N");
+            stringManipulationExample.printEndsWithOfRequestedStringInEmployeeName(employees, "a");
+            stringManipulationExample.printIndexOfRequestedStringInEmployeeName(employees, "m");
+            stringManipulationExample.printLastIndexOfRequestedStringInEmployeeName(employees, "e");
+            stringManipulationExample.printLengthOfEmployeeNames(employees);
+            stringManipulationExample.printSubStringOfRequestedStringInEmployeeName(employees, new Random().ints(0, 2).findFirst().getAsInt(), new Random().ints(2, 4).findFirst().getAsInt());
+            stringManipulationExample.printReplaceFirstOfRequestedStringInEmployeeName(employees, "X");
+            stringManipulationExample.printReplaceOfRequestedStringInEmployeeName(employees, "B");
+            stringManipulationExample.printToLowerCaseOfEmployeeNames(employees);
+            stringManipulationExample.printToUpperCaseOfEmployeeNames(employees);
+            stringManipulationExample.printToCapitalCaseOfEmployeeNames(employees);
+            stringManipulationExample.printToEmployeeNamesWithJoining(employees);
+
+            System.out.println("------------------------------END OF STRING MANIPULATION EXAMPLE----------------------------------");
+        }
 
     }
+
 }

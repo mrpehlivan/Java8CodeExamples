@@ -1,6 +1,5 @@
 package com.example.streams;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 /**
